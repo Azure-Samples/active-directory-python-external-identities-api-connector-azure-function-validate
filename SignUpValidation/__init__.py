@@ -45,7 +45,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
     logging.info(f"Current doamin: {domain}")
 
     # Check the domain in the allowed list
-    if domain not in allowed_domains:
+    if domain.lower() not in allowed_domains:
         s = ", "
         return func.HttpResponse(
             json.dumps({"version": API_VERSION, "action": "ShowBlockPage", "code": "SignUp-Validation-03",
@@ -58,7 +58,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
     if ('jobTitle' in req_body and req_body.get('jobTitle')):  # use 'if not' (...) to require Job Title
         if len(req_body.get('jobTitle')) < 5:
             return func.HttpResponse(
-                json.dumps({"version": API_VERSION, "status": 400, "action": "ShowBlockPage",
+                json.dumps({"version": API_VERSION, "status": 400, "action": "ValidationError",
                             "code": "SignUp-Validation-04", "userMessage": "Job Title must contain at least five characters."}),
                 status_code=400,
                 mimetype="application/json"
