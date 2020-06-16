@@ -71,7 +71,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
             )
 
     # Input validation passed successfully, return `Allow` response.
-    return func.HttpResponse("Ok")
+    return func.HttpResponse(
+        json.dumps({"version": API_VERSION, "action": "Continue"}),
+        status_code=200,
+        mimetype="application/json"
+    )
 
 def authorize(req: func.HttpRequest):
 
