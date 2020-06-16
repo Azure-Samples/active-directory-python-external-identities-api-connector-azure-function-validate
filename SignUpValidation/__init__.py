@@ -1,13 +1,19 @@
 import logging
 import json
 import azure.functions as func
-
+import os
+import base64
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request v1.0.')
 
     # Allowed domains
     allowedDomain = ["fabrikam.com" ,"contoso.com"];
+
+    # Check HTTP basic authorization
+    if not authorize(req):
+        logging.info("HTTP basic authentication validation failed.")
+        return func.HttpResponse(status_code=401)
 
     # Get the request body
     try:
@@ -66,3 +72,35 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Input validation passed successfully, return `Allow` response.
     return func.HttpResponse("Ok")
 
+def authorize(req: func.HttpRequest):
+
+    # Get the environment's credentials 
+    username = os.environ["BASIC_AUTH_USERNAME"]
+    password = os.environ["BASIC_AUTH_PASSWORD"]
+
+    # Returns authorized if the username is empty or not exists.
+    if not username:
+        logging.info("HTTP basic authentication is not set.")
+        return True
+
+    # Check if the HTTP Authorization header exist
+    if not req.headers.get("Authorization"):
+        logging.info("Missing HTTP basic authentication header.")
+        return False 
+
+    # Read the authorization header
+    auth = req.headers.get("Authorization")
+
+    # Ensure the type of the authorization header id `Basic`
+    if  "Basic " not in auth:
+        logging.info("HTTP basic authentication header must start with 'Basic '.")
+        return False  
+
+    # Get the HTTP basic authorization credentials
+    auth = auth[6:]
+    authBytes = base64.b64decode(auth)
+    auth  = authBytes.decode("utf-8")
+    cred = auth.split(':')
+
+    # Evaluate the credentials and return the result
+    return (cred[0] == username and cred[1] == password)
