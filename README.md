@@ -8,7 +8,7 @@ description: "A sample to demonstrate how to validating a sign-up using a Python
 urlFragment: "active-directory-dotnet-external-identities-api-connector-azure-function-validateb"
 ---
 
-# External Identities self-service sign-up validation using Node.js Azure Function and API connector.
+# External Identities self-service sign-up validation using a Python Azure Function and API connector.
 
 This sample demonstrates how to use API connectors to customize [self-service sign-up](https://docs.microsoft.com/azure/active-directory/b2b/self-service-sign-up-overview) of External Identities.
 
@@ -17,7 +17,7 @@ In particular, the sample demonstrates how to:
 1. Limit external user sign-ups to only a particular federated Azure Active Directory tenant. In this example, it's a fictitious `fabrikam.com` and `contoso.com`.
 1. Validate a user-provided value ('Job Title') against a validation rule.
 
-For the API, an Azure Function HTTP trigger using Python .Net core is implemented (with Basic authentication TBD!!!!!).
+For the API, an Azure Function HTTP trigger using Python is implemented.
 
 ## Contents
 
@@ -34,7 +34,7 @@ For the API, an Azure Function HTTP trigger using Python .Net core is implemente
 
 External Identities [self-service sign-up](https://docs.microsoft.com/azure/active-directory/b2b/self-service-sign-up-overview) enables you way to create custom experiences for external users like collaborators, partners, and guests to sign-up to to applications in your tenant for easy collaboration.
 
-[API connectors](https://docs.microsoft.com/azure/active-directory/b2b/api-connectors-overview) provide you with a way to further modify and extend sign-up flows by leveraging web APIs. This examples uses an API connector to limit sign-ups to only a specific tenant: fabrikam.com. This is easily modifiable in `index.js`. Further, the API connector is used to perform input validation on 'Job Title' by ensuring a user provides a value of at least 4 characters.
+[API connectors](https://docs.microsoft.com/azure/active-directory/b2b/api-connectors-overview) provide you with a way to further modify and extend sign-up flows by leveraging web APIs. This examples uses an API connector to limit sign-ups to only a specific tenant: fabrikam.com. This is easily modifiable in `__index__.py`. Further, the API connector is used to perform input validation on 'Job Title' by ensuring a user provides a value of at least 4 characters.
 
 ## Prerequisites
 
@@ -86,10 +86,10 @@ Specify a **Username** and **Password**. This will be what your Azure Function u
 
 ### Deploy the application
 
-1. Follow steps of [this](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) guide #1-7 to deploy your Azure Function to the cloud and get a live API endpoint URL.
-1. Once deployed, you'll see a **'Upload settings'** option. Select this. It will upload your environment variables onto the [Application settings](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) of the cloud.
+1. Follow steps of [this](https://docs.microsoft.com/en-us/azure/developer/python/tutorial-vs-code-serverless-python-05) guide to deploy your Azure Function to the cloud and get a live API endpoint URL.
+1. Once deployed, you'll see a **'Upload settings'** option. Select this. It will upload your environment variables onto the [Application settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) of function app.
 
-To learn more about Visual Studio Code development for Azure Functions, see [this](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files).
+To learn more about Visual Studio Code development for Azure Functions, see [this](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code).
 
 ## Configure and enable the API connector
 
