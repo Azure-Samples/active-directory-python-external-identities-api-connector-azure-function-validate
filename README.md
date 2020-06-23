@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/active-directory-python-external-iden
 1. Output from the Functions Core tools appears in the VS Code **Terminal** panel. Once the host has started, **Alt+click** the local URL shown in the output to open the browser and run the function. You can also see the url of the Local Function by right clicking on the function on the Azure Functions explorer.
 1. To redeploy the local instance during testing, just repeat these steps.
 
-### Add authentication
+<!-- ### Add authentication
 
 Authentication is stored in environment variables, so they're not stored as part of the repository and should never be stored in checked in code. Read more about the [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) file.
 
@@ -82,12 +82,12 @@ Authentication is stored in environment variables, so they're not stored as part
 }
 ```
 
-Specify a **Username** and **Password**. This will be what your Azure Function uses to authenticate incoming requests from Azure AD.
+Specify a **Username** and **Password**. This will be what your Azure Function uses to authenticate incoming requests from Azure AD. -->
 
 ### Deploy the application
 
 1. Follow steps of [this](https://docs.microsoft.com/en-us/azure/developer/python/tutorial-vs-code-serverless-python-05) guide to deploy your Azure Function to the cloud and get a live API endpoint URL.
-1. Once deployed, you'll see a **'Upload settings'** option. Select this. It will upload your environment variables onto the [Application settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) of function app.
+<!-- 1. Once deployed, you'll see a **'Upload settings'** option. Select this. It will upload your environment variables onto the [Application settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) of function app. -->
 
 To learn more about Visual Studio Code development for Azure Functions, see [this](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code).
 
