@@ -23,8 +23,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
         req_body = req.get_json()
     except:
         return func.HttpResponse(
-            json.dumps({"version": API_VERSION, "action": "ShowBlockPage",
-                        "code": "SignUp-Validation-01", "userMessage": "There was a problem with your request."}),
+            json.dumps({"version": API_VERSION, "action": "ShowBlockPage", "userMessage": "There was a problem with your request."}),
             status_code=200,
             mimetype="application/json"
         )
@@ -40,8 +39,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
     # If email claim not found, show block page. Email is required and sent by default.
     if 'email' not in req_body or not req_body.get('email') or "@" not in req_body.get('email'):
         return func.HttpResponse(
-            json.dumps({"version": API_VERSION, "action": "ShowBlockPage",
-                        "code": "SignUp-Validation-02", "userMessage": "Email is mandatory."}),
+            json.dumps({"version": API_VERSION, "action": "ShowBlockPage", "userMessage": "Email is mandatory."}),
             status_code=200,
             mimetype="application/json"
         )
@@ -54,7 +52,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
     if domain.lower() not in allowed_domains:
         s = ", "
         return func.HttpResponse(
-            json.dumps({"version": API_VERSION, "action": "ShowBlockPage", "code": "SignUp-Validation-03",
+            json.dumps({"version": API_VERSION, "action": "ShowBlockPage",
                         "userMessage": f"You must have an account from '{s.join(allowed_domains)}' to register as an external user for Contoso."}),
             status_code=200,
             mimetype="application/json"
@@ -64,8 +62,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
     if ('jobTitle' in req_body and req_body.get('jobTitle')):  # use 'if not' (...) to require Job Title
         if len(req_body.get('jobTitle')) < 5:
             return func.HttpResponse(
-                json.dumps({"version": API_VERSION, "status": 400, "action": "ValidationError",
-                            "code": "SignUp-Validation-04", "userMessage": "Job Title must contain at least five characters."}),
+                json.dumps({"version": API_VERSION, "status": 400, "action": "ValidationError", "userMessage": "Job Title must contain at least five characters."}),
                 status_code=400,
                 mimetype="application/json"
             )
