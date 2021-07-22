@@ -110,8 +110,6 @@ Your API connector configuration should look like the following:
 ### Enable the API connector
 
 In the **API connector** settings for your user flow, you can select the API connector to be invoked at either step:
-![API connector selected](media/api-connector-selected.png)
-
 
 <img src="media/api-connector-selected.png" alt="API connector select"
     title="API connector selection" width="800" />
