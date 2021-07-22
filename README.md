@@ -5,7 +5,7 @@ languages:
 products:
   - azure-active-directory
 description: "A sample to demonstrate how to validating a sign-up user flow using a Python Azure Function and API connectors"
-urlFragment: "active-directory-python-external-identities-api-connector-azure-function-validateb"
+urlFragment: "active-directory-python-external-identities-api-connector-azure-function-validate"
 ---
 
 # User flow sign-up customization using Python Azure Function and API connectors
