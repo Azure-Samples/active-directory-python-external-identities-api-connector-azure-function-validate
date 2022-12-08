@@ -46,7 +46,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # API version
 
     # Get domain of email address
     domain = req_body.get('email').split('@')[1]
-    logging.info(f"Current doamin: {domain}")
+    logging.info(f"Current domain: {domain}")
 
     # Check the domain in the allowed list
     if domain.lower() not in allowed_domains:
